@@ -1,0 +1,63 @@
+<!--
+ Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.0-1 (tags/2.2.0u1-7139; 2012-06-02T10:55:19+0000) JAXWS-RI/2.2.6-2 JAXWS/2.2 svn-revision#unknown. 
+-->
+<xs:schema xmlns:tns="http://webservices.simple.carcass.oosc.swc.rwth.de/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservices.simple.carcass.oosc.swc.rwth.de/">
+<xs:element name="getAllMaterials" type="tns:getAllMaterials"/>
+<xs:element name="getAllMaterialsResponse" type="tns:getAllMaterialsResponse"/>
+<xs:complexType name="getAllMaterials">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getAllMaterialsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:materialDTO" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="materialDTO">
+<xs:sequence>
+<xs:element name="cowEarNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="deadType" type="tns:deadType" minOccurs="0"/>
+<xs:element name="identification" type="xs:string" minOccurs="0"/>
+<xs:element name="materialGatheringPoint" type="tns:materialGatheringPointDTO" minOccurs="0"/>
+<xs:element name="materialType" type="tns:materialType" minOccurs="0"/>
+<xs:element name="weight" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="materialGatheringPointDTO">
+<xs:sequence>
+<xs:element name="customer" type="tns:customerDTO" minOccurs="0"/>
+<xs:element name="customerNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="pointIdentifier" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="customerDTO">
+<xs:sequence>
+<xs:element name="customerName" type="xs:string" minOccurs="0"/>
+<xs:element name="customerNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="customerType" type="tns:customerType" minOccurs="0"/>
+<xs:element name="lat" type="xs:double"/>
+<xs:element name="lng" type="xs:double"/>
+<xs:element name="zip" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="deadType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="NormalDead"/>
+<xs:enumeration value="CommunicableIllness"/>
+<xs:enumeration value="NonCommunicableIllnes"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="customerType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="FARMER"/>
+<xs:enumeration value="RESEARCH_LABORATORY"/>
+<xs:enumeration value="UNSPECIFIC"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="materialType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="GOAT"/>
+<xs:enumeration value="PIG"/>
+<xs:enumeration value="COW"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
